@@ -253,8 +253,6 @@ function mor() {
     return x + y;
 }
 
-var gmord = 'teste miqueias';
-
 window.onload = function() {
     i();
 };
