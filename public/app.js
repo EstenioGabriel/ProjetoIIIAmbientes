@@ -2,7 +2,7 @@ let pokemonList = [];
 let pokemonTypeList = [];
 let minimumPokemonPerPage = 1;
 let maximumPokemonPerPage = 20;
-var e = '';
+let searchPokemon = '';
 var f1 = '';
 
 const API = 'https://pokeapi.co/api/v2/pokemon';
@@ -96,10 +96,10 @@ function UNIFOR() {
     g.innerHTML = '';
 
     var fil = pokemonTypeList;
-    if(e !== '') {
+    if(searchPokemon !== '') {
         fil = fil.filter(p => {
-            return p.name.toLowerCase().includes(e.toLowerCase()) ||
-                   p.id.toString().includes(e);
+            return p.name.toLowerCase().includes(searchPokemon.toLowerCase()) ||
+                   p.id.toString().includes(searchPokemon);
         });
     }
 
@@ -137,7 +137,7 @@ function UNIFOR() {
 }
 
 async function f() {
-    e = document.getElementById('s').value;
+    searchPokemon = document.getElementById('s').value;
     f1 = document.getElementById('typeFilter').value;
 
     // Se tem filtro de tipo, busca pokémons daquele tipo
@@ -151,7 +151,7 @@ async function f() {
 function r() {
     document.getElementById('s').value = '';
     document.getElementById('typeFilter').value = '';
-    e = '';
+    searchPokemon = '';
     f1 = '';
     minimumPokemonPerPage = 1;
     l();
