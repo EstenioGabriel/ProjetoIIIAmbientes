@@ -72,8 +72,8 @@ async function lbt() {
 
         let pokemonTypesList = [];
         let limitPerPage = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
-        for(var i = 0; i < limitPerPage; i++) {
-            pokemonTypesList.push(fetch(listPokemonTypes.pokemon[i].pokemon.url));
+        for(let index = 0; index < limitPerPage; index++) {
+            pokemonTypesList.push(fetch(listPokemonTypes.pokemon[index].pokemon.url));
         }
 
         var rps = await Promise.all(pokemonTypesList);
