@@ -1,4 +1,4 @@
-var a = [];
+let pokemonList = [];
 var b = [];
 var c = 1;
 var d = 20;
@@ -47,13 +47,13 @@ async function l() {
         }
 
         var r = await Promise.all(pro);
-        a = [];
+        pokemonList = [];
         for(var i = 0; i < r.length; i++) {
             var pokemon = await r[i].json();
-            a.push(pokemon);
+            pokemonList.push(pokemon);
         }
 
-        b = [...a];
+        b = [...pokemonList];
         UNIFOR();
     } catch(error) {
         console.log('erro ao carregar');
@@ -77,13 +77,13 @@ async function lbt() {
         }
 
         var rps = await Promise.all(pr);
-        a = [];
+        pokemonList = [];
         for(let index = 0; index < rps.length; index++) {
             var p = await rps[index].json();
-            a.push(p);
+            pokemonList.push(p);
         }
 
-        b = [...a];
+        b = [...pokemonList];
         UNIFOR();
     } catch(error) {
         console.log('erro ao carregar tipo');
