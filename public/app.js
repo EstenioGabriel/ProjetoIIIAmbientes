@@ -168,11 +168,13 @@ function UNIFOR() {
   // Exibe o grid de Pokémon
 
   if (searchTypePokemon !== "") {
-    document.getElementById("pageInfo").textContent =
-      "Mostrando " + fil.length + " pokémons";
+    document.getElementById(
+      "pageInfo"
+    ).textContent = `Mostrando ${fil.length} pokémons`;
   } else {
-    document.getElementById("pageInfo").textContent =
-      "Página " + minimumPokemonPerPage;
+    document.getElementById(
+      "pageInfo"
+    ).textContent = `Página ${minimumPokemonPerPage}`;
   }
   // Atualiza informações da página: quantidade de Pokémon exibidos ou página atual
 
