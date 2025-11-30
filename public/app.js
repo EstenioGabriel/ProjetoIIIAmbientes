@@ -131,15 +131,10 @@ function UNIFOR() {
     fdp.className = "col-md-3";
     // Cria um div para cada Pokémon com classe de layout em grade (Bootstrap)
 
-    var html = '<div class="c" onclick="showDetails(' + p.id + ')">';
+    var html = `<div class="c" onclick="showDetails(${p.id})">`;
     // Cria o container do Pokémon e define um evento onclick para mostrar detalhes do Pokémon
 
-    html +=
-      '<img src="' +
-      p.sprites.front_default +
-      '" class="i" alt="' +
-      p.name +
-      '">';
+    html += `<img src="${p.sprites.front_default}" class="i" alt="${p.name}">`;
     // Adiciona a imagem do Pokémon no HTML
 
     html +=
