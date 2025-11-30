@@ -28,15 +28,15 @@ async function loadingPokemonTypes() {
         console.log('erro',erro);
     }
 
-    l();
+    await loadingAllTypesPokemon();
 }
 
-async function l() {
+async function loadingAllTypesPokemon() {
     document.getElementById('loading').style.display = 'flex';
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var off = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
+        let off = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
         var ur = API + '?limit=' + maximumPokemonPerPage + '&offset=' + off;
         var r = await fetch(ur);
         var dt = await r.json();
@@ -154,7 +154,7 @@ function r() {
     searchPokemon = '';
     searchTypePokemon = '';
     minimumPokemonPerPage = 1;
-    l();
+    loadingAllTypesPokemon();
 }
 
 function p1() {
@@ -163,7 +163,7 @@ function p1() {
         if(searchTypePokemon !== '') {
             UNIFOR();
         } else {
-            l();
+            loadingAllTypesPokemon();
         }
     }
 }
@@ -173,7 +173,7 @@ function p2() {
     if(searchTypePokemon !== '') {
         UNIFOR();
     } else {
-        l();
+        loadingAllTypesPokemon();
     }
 }
 
