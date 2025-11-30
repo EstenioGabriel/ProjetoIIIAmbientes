@@ -8,7 +8,7 @@ let searchTypePokemon = '';
 const API = 'https://pokeapi.co/api/v2/pokemon';
 const API2 = 'https://pokeapi.co/api/v2/type';
 
-async function i() {
+async function loadingPokemon() {
     document.getElementById('loading').innerHTML = '';
     for(var i = 0; i < 20; i++) {
         document.getElementById('loading').innerHTML += '<div class="col-md-3"><div class="skeleton"></div></div>';
@@ -248,5 +248,5 @@ async function Minhe_nha(id) {
 }
 
 window.onload = function() {
-    i();
+    loadingPokemon();
 };
