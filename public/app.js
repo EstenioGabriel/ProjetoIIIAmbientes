@@ -68,12 +68,12 @@ async function lbt() {
     try {
         let typePokemonRote= API2 + '/' + searchTypePokemon;
         let responsePokemonRote = await fetch(typePokemonRote);
-        var dt = await responsePokemonRote.json();
+        let listPokemonTypes = await responsePokemonRote.json();
 
         var pr = [];
-        var li = dt.pokemon.length > 100 ? 100 : dt.pokemon.length; // Limita a 100
+        var li = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
         for(var i = 0; i < li; i++) {
-            pr.push(fetch(dt.pokemon[i].pokemon.url));
+            pr.push(fetch(listPokemonTypes.pokemon[i].pokemon.url));
         }
 
         var rps = await Promise.all(pr);
