@@ -20,32 +20,4 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-/*
-REMOVIDOS:
 
-function doStuff(req, res) 
-Removida pois ela faz o mesmo trabalho do comando app.use(express.static(path.join(__dirname, 'public'))) 
-so que de forma mais redundante e complexa
-
-app.get('/', doStuff);
-Como a função doStuff foi removida não há necessidade desse comando
-
-var globalVar = "I am global";
-Não há utilidade
-
-function f1() {
-  return true;
-}
-Não há utilidade
-
-var unused = "this is never used";
-Não há utilidade
-
-var x = 10;
-var y = 20;
-Não há utilidade
-
-
-var msg
-Substituída pelo template literals
-*/
