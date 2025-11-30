@@ -55,8 +55,8 @@ async function loadingAllTypesPokemon() {
 
         pokemonTypeList = [...pokemonList];
         UNIFOR();
-    } catch(error) {
-        console.log('erro ao carregar');
+    } catch(erro) {
+        console.log('erro ao carregar',erro);
         alert('Erro ao carregar Pokémons!');
     }
 }
