@@ -1,5 +1,5 @@
 let pokemonList = [];
-var b = [];
+let pokemonTypeList = [];
 var c = 1;
 var d = 20;
 var e = '';
@@ -53,7 +53,7 @@ async function l() {
             pokemonList.push(pokemon);
         }
 
-        b = [...pokemonList];
+        pokemonTypeList = [...pokemonList];
         UNIFOR();
     } catch(error) {
         console.log('erro ao carregar');
@@ -83,7 +83,7 @@ async function lbt() {
             pokemonList.push(p);
         }
 
-        b = [...pokemonList];
+        pokemonTypeList = [...pokemonList];
         UNIFOR();
     } catch(error) {
         console.log('erro ao carregar tipo');
@@ -95,7 +95,7 @@ function UNIFOR() {
     var g = document.getElementById('pokemonGrid');
     g.innerHTML = '';
 
-    var fil = b;
+    var fil = pokemonTypeList;
     if(e !== '') {
         fil = fil.filter(p => {
             return p.name.toLowerCase().includes(e.toLowerCase()) ||
