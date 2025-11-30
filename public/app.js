@@ -215,9 +215,9 @@ async function Minhe_nha(id) {
         ph += '<p><strong>Peso:</strong> ' + (p.weight / 10) + ' kg</p>';
 
         ph += '<p><strong>Habilidades:</strong> ';
-        for(var i = 0; i < p.abilities.length; i++) {
-            ph += p.abilities[i].ability.name;
-            if(i < p.abilities.length - 1) ph += ', ';
+        for(let index = 0; index < p.abilities.length; index++) {
+            ph += p.abilities[index].ability.name;
+            if(index < p.abilities.length - 1) ph += ', ';
         }
         ph += '</p>';
 
