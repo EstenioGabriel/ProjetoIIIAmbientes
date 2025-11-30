@@ -15,13 +15,13 @@ async function loadingPokemon() {
     }
 
     try {
-        var r = await fetch(API2);
-        var dt = await r.json();
-        var sel = document.getElementById('typeFilter');
-        for(let index = 0; index < dt.results.length; index++) {
+        let pokemonListTypes = await fetch(API2);
+        let listType = await pokemonListTypes.json();
+        let selectType = document.getElementById('typeFilter');
+        for(let index = 0; index < listType.results.length; index++) {
             let option = document.createElement('option');
-            option.value = dt.results[index].name;
-            option.textContent = dt.results[index].name.charAt(0).toUpperCase() + dt.results[index].name.slice(1);
+            option.value = listType.results[index].name;
+            option.textContent = listType.results[index].name.charAt(0).toUpperCase() + listType.results[index].name.slice(1);
             sel.appendChild(option);
         }
     } catch(err) {
