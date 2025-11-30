@@ -18,11 +18,11 @@ async function i() {
         var r = await fetch(API2);
         var dt = await r.json();
         var sel = document.getElementById('typeFilter');
-        for(var i = 0; i < dt.results.length; i++) {
-            var opt = document.createElement('option');
-            opt.value = dt.results[i].name;
-            opt.textContent = dt.results[i].name.charAt(0).toUpperCase() + dt.results[i].name.slice(1);
-            sel.appendChild(opt);
+        for(let index = 0; index < dt.results.length; index++) {
+            let option = document.createElement('option');
+            option.value = dt.results[index].name;
+            option.textContent = dt.results[index].name.charAt(0).toUpperCase() + dt.results[index].name.slice(1);
+            sel.appendChild(option);
         }
     } catch(err) {
         console.log('erro');
