@@ -79,8 +79,8 @@ async function lbt() {
         let response = await Promise.all(pokemonTypesList);
         pokemonList = [];
         for(let index = 0; index < response.length; index++) {
-            var p = await response[index].json();
-            pokemonList.push(p);
+            let responseData = await response[index].json();
+            pokemonList.push(responseData);
         }
 
         pokemonTypeList = [...pokemonList];
