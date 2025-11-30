@@ -206,8 +206,8 @@ async function Minhe_nha(id) {
         ph += '</div>';
 
         ph += '<p><strong>Tipo:</strong> ';
-        for(var i = 0; i < p.types.length; i++) {
-            ph += '<span class="badge type-' + p.types[i].type.name + '">' + p.types[i].type.name + '</span> ';
+        for(let index = 0; index < p.types.length; index++) {
+            ph += '<span class="badge type-' + p.types[index].type.name + '">' + p.types[index].type.name + '</span> ';
         }
         ph += '</p>';
 
