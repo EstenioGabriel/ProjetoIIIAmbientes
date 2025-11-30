@@ -227,8 +227,8 @@ async function Minhe_nha(id) {
         ph += '<p>' + desc.replace(/\f/g, ' ') + '</p>';
 
         ph += '<h6>Estatísticas:</h6>';
-        for(var i = 0; i < p.stats.length; i++) {
-            var stat = p.stats[i];
+        for(let index = 0; index < p.stats.length; index++) {
+            var stat = p.stats[index];
             var percentage = (stat.base_stat / 255) * 100;
             ph += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
             ph += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
