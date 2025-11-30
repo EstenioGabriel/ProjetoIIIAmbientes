@@ -18,11 +18,11 @@ async function i() {
         var r = await fetch(API2);
         var dt = await r.json();
         var sel = document.getElementById('typeFilter');
-        for(var i = 0; i < dt.results.length; i++) {
-            var opt = document.createElement('option');
-            opt.value = dt.results[i].name;
-            opt.textContent = dt.results[i].name.charAt(0).toUpperCase() + dt.results[i].name.slice(1);
-            sel.appendChild(opt);
+        for(let index = 0; index < dt.results.length; index++) {
+            let option = document.createElement('option');
+            option.value = dt.results[index].name;
+            option.textContent = dt.results[index].name.charAt(0).toUpperCase() + dt.results[index].name.slice(1);
+            sel.appendChild(option);
         }
     } catch(err) {
         console.log('erro');
@@ -42,8 +42,8 @@ async function l() {
         var dt = await r.json();
 
         var pro = [];
-        for(var i = 0; i < dt.results.length; i++) {
-            pro.push(fetch(dt.results[i].url));
+        for(let index = 0; index < dt.results.length; index++) {
+            pro.push(fetch(dt.results[index].url));
         }
 
         var r = await Promise.all(pro);
@@ -78,8 +78,8 @@ async function lbt() {
 
         var rps = await Promise.all(pr);
         a = [];
-        for(var i = 0; i < rps.length; i++) {
-            var p = await rps[i].json();
+        for(let index = 0; index < rps.length; index++) {
+            var p = await rps[index].json();
             a.push(p);
         }
 
@@ -190,9 +190,9 @@ async function Minhe_nha(id) {
         var m = await zyz.json();
 
         var desc = '';
-        for(var i = 0; i < m.flavor_text_entries.length; i++) {
-            if(m.flavor_text_entries[i].language.name === 'en') {
-                desc = m.flavor_text_entries[i].flavor_text;
+        for(let index = 0; index < m.flavor_text_entries.length; index++) {
+            if(m.flavor_text_entries[index].language.name === 'en') {
+                desc = m.flavor_text_entries[index].flavor_text;
                 break;
             }
         }
@@ -206,8 +206,8 @@ async function Minhe_nha(id) {
         ph += '</div>';
 
         ph += '<p><strong>Tipo:</strong> ';
-        for(var i = 0; i < p.types.length; i++) {
-            ph += '<span class="badge type-' + p.types[i].type.name + '">' + p.types[i].type.name + '</span> ';
+        for(let index = 0; index < p.types.length; index++) {
+            ph += '<span class="badge type-' + p.types[index].type.name + '">' + p.types[index].type.name + '</span> ';
         }
         ph += '</p>';
 
@@ -215,9 +215,9 @@ async function Minhe_nha(id) {
         ph += '<p><strong>Peso:</strong> ' + (p.weight / 10) + ' kg</p>';
 
         ph += '<p><strong>Habilidades:</strong> ';
-        for(var i = 0; i < p.abilities.length; i++) {
-            ph += p.abilities[i].ability.name;
-            if(i < p.abilities.length - 1) ph += ', ';
+        for(let index = 0; index < p.abilities.length; index++) {
+            ph += p.abilities[index].ability.name;
+            if(index < p.abilities.length - 1) ph += ', ';
         }
         ph += '</p>';
 
@@ -227,8 +227,8 @@ async function Minhe_nha(id) {
         ph += '<p>' + desc.replace(/\f/g, ' ') + '</p>';
 
         ph += '<h6>Estatísticas:</h6>';
-        for(var i = 0; i < p.stats.length; i++) {
-            var stat = p.stats[i];
+        for(let index = 0; index < p.stats.length; index++) {
+            var stat = p.stats[index];
             var percentage = (stat.base_stat / 255) * 100;
             ph += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
             ph += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
