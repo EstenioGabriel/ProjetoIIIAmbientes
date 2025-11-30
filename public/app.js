@@ -46,10 +46,10 @@ async function loadingAllTypesPokemon() {
             listAllPokemons.push(fetch(responsePokemonList.results[index].url));
         }
 
-        var r = await Promise.all(listAllPokemons);
+        let responseListAllPokemons = await Promise.all(listAllPokemons);
         pokemonList = [];
-        for(var i = 0; i < r.length; i++) {
-            var pokemon = await r[i].json();
+        for(var i = 0; i < responseListAllPokemons.length; i++) {
+            var pokemon = await responseListAllPokemons[i].json();
             pokemonList.push(pokemon);
         }
 
