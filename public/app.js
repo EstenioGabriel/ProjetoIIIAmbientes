@@ -8,7 +8,7 @@ let searchTypePokemon = '';
 const API = 'https://pokeapi.co/api/v2/pokemon';
 const API2 = 'https://pokeapi.co/api/v2/type';
 
-async function loadingPokemon() {
+async function loadingPokemonTypes() {
     document.getElementById('loading').innerHTML = '';
     for(let index = 0; index < 20; index++) {
         document.getElementById('loading').innerHTML += '<div class="col-md-3"><div class="skeleton"></div></div>';
