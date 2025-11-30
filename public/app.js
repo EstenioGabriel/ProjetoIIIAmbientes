@@ -177,7 +177,7 @@ function p2() {
     }
 }
 
-function x() {
+function darkTheme() {
     document.body.classList.toggle('dark');
 }
 
