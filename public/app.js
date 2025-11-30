@@ -3,7 +3,7 @@ let pokemonTypeList = [];
 let minimumPokemonPerPage = 1;
 let maximumPokemonPerPage = 20;
 let searchPokemon = '';
-var f1 = '';
+let searchTypePokemon = '';
 
 const API = 'https://pokeapi.co/api/v2/pokemon';
 const API2 = 'https://pokeapi.co/api/v2/type';
@@ -66,7 +66,7 @@ async function lbt() {
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var ur = API2 + '/' + f1;
+        var ur = API2 + '/' + searchTypePokemon;
         var r = await fetch(ur);
         var dt = await r.json();
 
@@ -126,22 +126,22 @@ function UNIFOR() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('pokemonGrid').style.display = 'flex';
 
-    if(f1 !== '') {
+    if(searchTypePokemon !== '') {
         document.getElementById('pageInfo').textContent = 'Mostrando ' + fil.length + ' pokémons';
     } else {
         document.getElementById('pageInfo').textContent = 'Página ' + minimumPokemonPerPage;
     }
 
-    document.getElementById('prevBtn').disabled = minimumPokemonPerPage === 1 || f1 !== '';
-    document.getElementById('nextBtn').disabled = f1 !== '';
+    document.getElementById('prevBtn').disabled = minimumPokemonPerPage === 1 || searchTypePokemon !== '';
+    document.getElementById('nextBtn').disabled = searchTypePokemon !== '';
 }
 
 async function f() {
     searchPokemon = document.getElementById('s').value;
-    f1 = document.getElementById('typeFilter').value;
+    searchTypePokemon = document.getElementById('typeFilter').value;
 
     // Se tem filtro de tipo, busca pokémons daquele tipo
-    if(f1 !== '') {
+    if(searchTypePokemon !== '') {
         await lbt();
     } else {
         UNIFOR();
@@ -152,7 +152,7 @@ function r() {
     document.getElementById('s').value = '';
     document.getElementById('typeFilter').value = '';
     searchPokemon = '';
-    f1 = '';
+    searchTypePokemon = '';
     minimumPokemonPerPage = 1;
     l();
 }
@@ -160,7 +160,7 @@ function r() {
 function p1() {
     if(minimumPokemonPerPage > 1) {
         minimumPokemonPerPage--;
-        if(f1 !== '') {
+        if(searchTypePokemon !== '') {
             UNIFOR();
         } else {
             l();
@@ -170,7 +170,7 @@ function p1() {
 
 function p2() {
     minimumPokemonPerPage++;
-    if(f1 !== '') {
+    if(searchTypePokemon !== '') {
         UNIFOR();
     } else {
         l();
