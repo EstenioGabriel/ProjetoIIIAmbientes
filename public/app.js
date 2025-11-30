@@ -61,32 +61,32 @@ async function loadingAllTypesPokemon() {
     }
 }
 
-async function lbt() {
+async function listByType() {
     document.getElementById('loading').style.display = 'flex';
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var ur = API2 + '/' + searchTypePokemon;
-        var r = await fetch(ur);
-        var dt = await r.json();
+        let typePokemonRote= API2 + '/' + searchTypePokemon;
+        let responsePokemonRote = await fetch(typePokemonRote);
+        let listPokemonTypes = await responsePokemonRote.json();
 
-        var pr = [];
-        var li = dt.pokemon.length > 100 ? 100 : dt.pokemon.length; // Limita a 100
-        for(var i = 0; i < li; i++) {
-            pr.push(fetch(dt.pokemon[i].pokemon.url));
+        let pokemonTypesList = [];
+        let limitPerPage = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
+        for(let index = 0; index < limitPerPage; index++) {
+            pokemonTypesList.push(fetch(listPokemonTypes.pokemon[index].pokemon.url));
         }
 
-        var rps = await Promise.all(pr);
+        let response = await Promise.all(pokemonTypesList);
         pokemonList = [];
-        for(let index = 0; index < rps.length; index++) {
-            var p = await rps[index].json();
-            pokemonList.push(p);
+        for(let index = 0; index < response.length; index++) {
+            let responseData = await response[index].json();
+            pokemonList.push(responseData);
         }
 
         pokemonTypeList = [...pokemonList];
         UNIFOR();
-    } catch(error) {
-        console.log('erro ao carregar tipo');
+    } catch(erro) {
+        console.log('erro ao carregar tipo',erro);
         alert('Erro ao carregar Pokémons do tipo!');
     }
 }
@@ -142,7 +142,7 @@ async function f() {
 
     // Se tem filtro de tipo, busca pokémons daquele tipo
     if(searchTypePokemon !== '') {
-        await lbt();
+        await listByType();
     } else {
         UNIFOR();
     }
