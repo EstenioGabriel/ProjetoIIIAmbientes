@@ -1,7 +1,7 @@
 let pokemonList = [];
 let pokemonTypeList = [];
 let minimumPokemonPerPage = 1;
-var d = 20;
+let maximumPokemonPerPage = 20;
 var e = '';
 var f1 = '';
 
@@ -36,8 +36,8 @@ async function l() {
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var off = (minimumPokemonPerPage - 1) * d;
-        var ur = API + '?limit=' + d + '&offset=' + off;
+        var off = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
+        var ur = API + '?limit=' + maximumPokemonPerPage + '&offset=' + off;
         var r = await fetch(ur);
         var dt = await r.json();
 
