@@ -85,8 +85,8 @@ async function lbt() {
 
         pokemonTypeList = [...pokemonList];
         UNIFOR();
-    } catch(error) {
-        console.log('erro ao carregar tipo');
+    } catch(erro) {
+        console.log('erro ao carregar tipo',erro);
         alert('Erro ao carregar Pokémons do tipo!');
     }
 }
