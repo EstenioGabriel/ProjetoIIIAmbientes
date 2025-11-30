@@ -8,24 +8,24 @@ let searchTypePokemon = '';
 const API = 'https://pokeapi.co/api/v2/pokemon';
 const API2 = 'https://pokeapi.co/api/v2/type';
 
-async function i() {
+async function loadingPokemonTypes() {
     document.getElementById('loading').innerHTML = '';
-    for(var i = 0; i < 20; i++) {
+    for(let index = 0; index < 20; index++) {
         document.getElementById('loading').innerHTML += '<div class="col-md-3"><div class="skeleton"></div></div>';
     }
 
     try {
-        var r = await fetch(API2);
-        var dt = await r.json();
-        var sel = document.getElementById('typeFilter');
-        for(let index = 0; index < dt.results.length; index++) {
+        let pokemonListTypes = await fetch(API2);
+        let listType = await pokemonListTypes.json();
+        let selectType = document.getElementById('typeFilter');
+        for(let index = 0; index < listType.results.length; index++) {
             let option = document.createElement('option');
-            option.value = dt.results[index].name;
-            option.textContent = dt.results[index].name.charAt(0).toUpperCase() + dt.results[index].name.slice(1);
-            sel.appendChild(option);
+            option.value = listType.results[index].name;
+            option.textContent = listType.results[index].name.charAt(0).toUpperCase() + listType.results[index].name.slice(1);
+            selectType.appendChild(option);
         }
-    } catch(err) {
-        console.log('erro');
+    } catch(erro) {
+        console.log('erro',erro);
     }
 
     l();
@@ -248,5 +248,5 @@ async function Minhe_nha(id) {
 }
 
 window.onload = function() {
-    i();
+    loadingPokemon();
 };
