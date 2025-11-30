@@ -157,7 +157,7 @@ function r() {
     loadingAllTypesPokemon();
 }
 
-function p1() {
+function previousPage() {
     if(minimumPokemonPerPage > 1) {
         minimumPokemonPerPage--;
         if(searchTypePokemon !== '') {
