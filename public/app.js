@@ -37,9 +37,9 @@ async function loadingAllTypesPokemon() {
 
     try {
         let changePokemonPerPage = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
-        var pokemonLimitPage = API + '?limit=' + '&offset=' + changePokemonPerPage;
-        var r = await fetch(pokemonLimitPage);
-        var dt = await pokemonLimitPage.json();
+        let pokemonLimitPage = API + '?limit=' + '&offset=' + changePokemonPerPage;
+        let responsePokemonLimitPage = await fetch(pokemonLimitPage);
+        var dt = await responsePokemonLimitPage.json();
 
         var pro = [];
         for(let index = 0; index < dt.results.length; index++) {
