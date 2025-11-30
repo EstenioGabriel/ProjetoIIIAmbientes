@@ -168,7 +168,7 @@ function previousPage() {
     }
 }
 
-function p2() {
+function nextPage() {
     minimumPokemonPerPage++;
     if(searchTypePokemon !== '') {
         UNIFOR();
