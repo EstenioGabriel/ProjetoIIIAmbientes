@@ -36,8 +36,8 @@ async function loadingAllTypesPokemon() {
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        let off = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
-        var ur = API + '?limit=' + maximumPokemonPerPage + '&offset=' + off;
+        let changePokemonPerPage = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
+        var ur = API + '?limit=' + maximumPokemonPerPage + '&offset=' + changePokemonPerPage;
         var r = await fetch(ur);
         var dt = await r.json();
 
