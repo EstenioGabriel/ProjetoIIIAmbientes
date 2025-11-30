@@ -67,8 +67,8 @@ async function lbt() {
 
     try {
         let typePokemonRote= API2 + '/' + searchTypePokemon;
-        var r = await fetch(typePokemonRote);
-        var dt = await r.json();
+        let responsePokemonRote = await fetch(typePokemonRote);
+        var dt = await responsePokemonRote.json();
 
         var pr = [];
         var li = dt.pokemon.length > 100 ? 100 : dt.pokemon.length; // Limita a 100
