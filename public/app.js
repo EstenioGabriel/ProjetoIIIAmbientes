@@ -248,5 +248,5 @@ async function Minhe_nha(id) {
 }
 
 window.onload = function() {
-    loadingPokemon();
+    loadingPokemonTypes();
 };
