@@ -1,6 +1,6 @@
 let pokemonList = [];
 let pokemonTypeList = [];
-var c = 1;
+let minimumPokemonPerPage = 1;
 var d = 20;
 var e = '';
 var f1 = '';
@@ -36,7 +36,7 @@ async function l() {
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var off = (c - 1) * d;
+        var off = (minimumPokemonPerPage - 1) * d;
         var ur = API + '?limit=' + d + '&offset=' + off;
         var r = await fetch(ur);
         var dt = await r.json();
@@ -129,10 +129,10 @@ function UNIFOR() {
     if(f1 !== '') {
         document.getElementById('pageInfo').textContent = 'Mostrando ' + fil.length + ' pokémons';
     } else {
-        document.getElementById('pageInfo').textContent = 'Página ' + c;
+        document.getElementById('pageInfo').textContent = 'Página ' + minimumPokemonPerPage;
     }
 
-    document.getElementById('prevBtn').disabled = c === 1 || f1 !== '';
+    document.getElementById('prevBtn').disabled = minimumPokemonPerPage === 1 || f1 !== '';
     document.getElementById('nextBtn').disabled = f1 !== '';
 }
 
@@ -153,13 +153,13 @@ function r() {
     document.getElementById('typeFilter').value = '';
     e = '';
     f1 = '';
-    c = 1;
+    minimumPokemonPerPage = 1;
     l();
 }
 
 function p1() {
-    if(c > 1) {
-        c--;
+    if(minimumPokemonPerPage > 1) {
+        minimumPokemonPerPage--;
         if(f1 !== '') {
             UNIFOR();
         } else {
@@ -169,7 +169,7 @@ function p1() {
 }
 
 function p2() {
-    c++;
+    minimumPokemonPerPage++;
     if(f1 !== '') {
         UNIFOR();
     } else {
