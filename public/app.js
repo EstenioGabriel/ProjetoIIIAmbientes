@@ -148,7 +148,7 @@ async function f() {
     }
 }
 
-function r() {
+function clearSearch() {
     document.getElementById('s').value = '';
     document.getElementById('typeFilter').value = '';
     searchPokemon = '';
