@@ -76,10 +76,10 @@ async function lbt() {
             pokemonTypesList.push(fetch(listPokemonTypes.pokemon[index].pokemon.url));
         }
 
-        var rps = await Promise.all(pokemonTypesList);
+        let response = await Promise.all(pokemonTypesList);
         pokemonList = [];
-        for(let index = 0; index < rps.length; index++) {
-            var p = await rps[index].json();
+        for(let index = 0; index < response.length; index++) {
+            var p = await response[index].json();
             pokemonList.push(p);
         }
 
