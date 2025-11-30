@@ -66,8 +66,8 @@ async function lbt() {
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var ur = API2 + '/' + searchTypePokemon;
-        var r = await fetch(ur);
+        let typePokemonRote= API2 + '/' + searchTypePokemon;
+        var r = await fetch(typePokemonRote);
         var dt = await r.json();
 
         var pr = [];
