@@ -247,12 +247,6 @@ async function Minhe_nha(id) {
     }
 }
 
-function mor() {
-    var x = 10;
-    var y = 20;
-    return x + y;
-}
-
 window.onload = function() {
     i();
 };
