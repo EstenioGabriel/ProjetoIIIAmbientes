@@ -42,8 +42,8 @@ async function l() {
         var dt = await r.json();
 
         var pro = [];
-        for(var i = 0; i < dt.results.length; i++) {
-            pro.push(fetch(dt.results[i].url));
+        for(let index = 0; index < dt.results.length; index++) {
+            pro.push(fetch(dt.results[index].url));
         }
 
         var r = await Promise.all(pro);
