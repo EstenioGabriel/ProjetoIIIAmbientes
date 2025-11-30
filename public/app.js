@@ -28,35 +28,35 @@ async function loadingPokemonTypes() {
         console.log('erro',erro);
     }
 
-    l();
+    await loadingAllTypesPokemon();
 }
 
-async function l() {
+async function loadingAllTypesPokemon() {
     document.getElementById('loading').style.display = 'flex';
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        var off = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
-        var ur = API + '?limit=' + maximumPokemonPerPage + '&offset=' + off;
-        var r = await fetch(ur);
-        var dt = await r.json();
+        let changePokemonPerPage = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
+        let pokemonLimitPage = API + '?limit=' + '&offset=' + changePokemonPerPage;
+        let responsePokemonLimitPage = await fetch(pokemonLimitPage);
+        let responsePokemonList = await responsePokemonLimitPage.json();
 
-        var pro = [];
-        for(let index = 0; index < dt.results.length; index++) {
-            pro.push(fetch(dt.results[index].url));
+        let listAllPokemons = [];
+        for(let index = 0; index < responsePokemonList.results.length; index++) {
+            listAllPokemons.push(fetch(responsePokemonList.results[index].url));
         }
 
-        var r = await Promise.all(pro);
+        let responseListAllPokemons = await Promise.all(listAllPokemons);
         pokemonList = [];
-        for(var i = 0; i < r.length; i++) {
-            var pokemon = await r[i].json();
+        for(let index = 0; index < responseListAllPokemons.length; index++) {
+            let pokemon = await responseListAllPokemons[index].json();
             pokemonList.push(pokemon);
         }
 
         pokemonTypeList = [...pokemonList];
         UNIFOR();
-    } catch(error) {
-        console.log('erro ao carregar');
+    } catch(erro) {
+        console.log('erro ao carregar',erro);
         alert('Erro ao carregar Pokémons!');
     }
 }
@@ -154,7 +154,7 @@ function r() {
     searchPokemon = '';
     searchTypePokemon = '';
     minimumPokemonPerPage = 1;
-    l();
+    loadingAllTypesPokemon();
 }
 
 function p1() {
@@ -163,7 +163,7 @@ function p1() {
         if(searchTypePokemon !== '') {
             UNIFOR();
         } else {
-            l();
+            loadingAllTypesPokemon();
         }
     }
 }
@@ -173,7 +173,7 @@ function p2() {
     if(searchTypePokemon !== '') {
         UNIFOR();
     } else {
-        l();
+        loadingAllTypesPokemon();
     }
 }
 
@@ -248,5 +248,5 @@ async function Minhe_nha(id) {
 }
 
 window.onload = function() {
-    loadingPokemon();
+    loadingPokemonTypes();
 };
