@@ -137,13 +137,9 @@ function UNIFOR() {
     html += `<img src="${p.sprites.front_default}" class="i" alt="${p.name}">`;
     // Adiciona a imagem do Pokémon no HTML
 
-    html +=
-      '<h5 class="text-center">#' +
-      p.id +
-      " " +
-      p.name.charAt(0).toUpperCase() +
-      p.name.slice(1) +
-      "</h5>";
+    html += `<h5 class="text-center">#${p.id} ${p.name
+      .charAt(0)
+      .toUpperCase()}${p.name.slice(1)}</h5>`;
     // Adiciona o ID e nome do Pokémon com a primeira letra em maiúscula
 
     html += '<div class="text-center">';
