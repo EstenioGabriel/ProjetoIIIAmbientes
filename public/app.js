@@ -190,9 +190,9 @@ async function Minhe_nha(id) {
         var m = await zyz.json();
 
         var desc = '';
-        for(var i = 0; i < m.flavor_text_entries.length; i++) {
-            if(m.flavor_text_entries[i].language.name === 'en') {
-                desc = m.flavor_text_entries[i].flavor_text;
+        for(let index = 0; index < m.flavor_text_entries.length; index++) {
+            if(m.flavor_text_entries[index].language.name === 'en') {
+                desc = m.flavor_text_entries[index].flavor_text;
                 break;
             }
         }
