@@ -61,7 +61,7 @@ async function loadingAllTypesPokemon() {
     }
 }
 
-async function lbt() {
+async function listByType() {
     document.getElementById('loading').style.display = 'flex';
     document.getElementById('pokemonGrid').style.display = 'none';
 
@@ -142,7 +142,7 @@ async function f() {
 
     // Se tem filtro de tipo, busca pokémons daquele tipo
     if(searchTypePokemon !== '') {
-        await lbt();
+        await listByType();
     } else {
         UNIFOR();
     }
