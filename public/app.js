@@ -70,13 +70,13 @@ async function lbt() {
         let responsePokemonRote = await fetch(typePokemonRote);
         let listPokemonTypes = await responsePokemonRote.json();
 
-        var pr = [];
+        let pokemonTypesList = [];
         var li = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
         for(var i = 0; i < li; i++) {
-            pr.push(fetch(listPokemonTypes.pokemon[i].pokemon.url));
+            pokemonTypesList.push(fetch(listPokemonTypes.pokemon[i].pokemon.url));
         }
 
-        var rps = await Promise.all(pr);
+        var rps = await Promise.all(pokemonTypesList);
         pokemonList = [];
         for(let index = 0; index < rps.length; index++) {
             var p = await rps[index].json();
