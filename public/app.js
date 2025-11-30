@@ -78,8 +78,8 @@ async function lbt() {
 
         var rps = await Promise.all(pr);
         a = [];
-        for(var i = 0; i < rps.length; i++) {
-            var p = await rps[i].json();
+        for(let index = 0; index < rps.length; index++) {
+            var p = await rps[index].json();
             a.push(p);
         }
 
