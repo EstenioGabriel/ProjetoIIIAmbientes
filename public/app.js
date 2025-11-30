@@ -71,8 +71,8 @@ async function lbt() {
         let listPokemonTypes = await responsePokemonRote.json();
 
         let pokemonTypesList = [];
-        var li = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
-        for(var i = 0; i < li; i++) {
+        let limitPerPage = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
+        for(var i = 0; i < limitPerPage; i++) {
             pokemonTypesList.push(fetch(listPokemonTypes.pokemon[i].pokemon.url));
         }
 
