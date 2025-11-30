@@ -147,8 +147,7 @@ function UNIFOR() {
 
     for (var j = 0; j < p.types.length; j++) {
       var typeName = p.types[j].type.name;
-      html +=
-        '<span class="badge type-' + typeName + '">' + typeName + "</span> ";
+      html += `<span class="badge type-${typeName}">${typeName}</span> `;
     }
     // Loop pelos tipos do Pokémon, criando uma badge para cada tipo
 
