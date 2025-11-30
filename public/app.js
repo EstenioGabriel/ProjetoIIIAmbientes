@@ -24,8 +24,8 @@ async function loadingPokemon() {
             option.textContent = listType.results[index].name.charAt(0).toUpperCase() + listType.results[index].name.slice(1);
             selectType.appendChild(option);
         }
-    } catch(err) {
-        console.log('erro',err);
+    } catch(erro) {
+        console.log('erro',erro);
     }
 
     l();
