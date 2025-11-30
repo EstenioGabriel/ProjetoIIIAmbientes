@@ -22,10 +22,10 @@ async function loadingPokemon() {
             let option = document.createElement('option');
             option.value = listType.results[index].name;
             option.textContent = listType.results[index].name.charAt(0).toUpperCase() + listType.results[index].name.slice(1);
-            sel.appendChild(option);
+            selectType.appendChild(option);
         }
     } catch(err) {
-        console.log('erro');
+        console.log('erro',err);
     }
 
     l();
