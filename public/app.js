@@ -10,7 +10,7 @@ const API2 = 'https://pokeapi.co/api/v2/type';
 
 async function loadingPokemon() {
     document.getElementById('loading').innerHTML = '';
-    for(var i = 0; i < 20; i++) {
+    for(let index = 0; index < 20; index++) {
         document.getElementById('loading').innerHTML += '<div class="col-md-3"><div class="skeleton"></div></div>';
     }
 
