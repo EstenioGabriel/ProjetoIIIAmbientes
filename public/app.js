@@ -127,8 +127,8 @@ function UNIFOR() {
     var p = fil[i];
     // Recebe o Pokémon atual no loop
 
-    var fdp = document.createElement("div");
-    fdp.className = "col-md-3";
+    var showPokemon = document.createElement("div");
+    showPokemon.className = "col-md-3";
     // Cria um div para cada Pokémon com classe de layout em grade (Bootstrap)
 
     var html = `<div class="c" onclick="showDetails(${p.id})">`;
@@ -154,10 +154,10 @@ function UNIFOR() {
     html += "</div></div>";
     // Fecha os divs abertos
 
-    fdp.innerHTML = html;
+    showPokemon.innerHTML = html;
     // Define o HTML gerado no div criado
 
-    g.appendChild(fdp);
+    g.appendChild(showPokemon);
     // Adiciona o div do Pokémon ao grid principal
   }
 
