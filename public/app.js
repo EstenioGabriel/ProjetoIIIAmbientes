@@ -232,7 +232,7 @@ async function showDetails(id) {
         placeHolder += '<h6>Estatísticas:</h6>';
         for(let index = 0; index < pokemonDetailsRote.stats.length; index++) {
             let status = pokemonDetailsRote.stats[index];
-            var percentage = (status.base_stat / 255) * 100;
+            let percentage = (status.base_stat / 255) * 100;
             placeHolder += '<div><small>' + status.stat.name + ': ' + status.base_stat + '</small>';
             placeHolder += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
         }
