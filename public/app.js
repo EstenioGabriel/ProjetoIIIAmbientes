@@ -105,8 +105,8 @@ function pokemonGrid() {
 
     for(var i = 0; i < pokemonFilteredList.length; i++) {
         var p = pokemonFilteredList[i];
-        var fdp = document.createElement('div');
-        fdp.className = 'col-md-3';
+        var showPokemon = document.createElement('div');
+        showPokemon.className = 'col-md-3';
 
         var html = '<div class="c" onclick="showDetails(' + p.id + ')">';
         html = html + '<img src="' + p.sprites.front_default + '" class="i" alt="' + p.name + '">';
@@ -123,8 +123,8 @@ function pokemonGrid() {
         g.appendChild(fdp);
     }
     html = html + "</div></div>";
-    fdp.innerHTML = html;
-    pokemonGridContainer.appendChild(fdp);
+    showPokemon.innerHTML = html;
+    pokemonGridContainer.appendChild(showPokemon);
   }
 
     document.getElementById('loading').style.display = 'none';
