@@ -108,7 +108,7 @@ function pokemonGrid() {
         var showPokemon = document.createElement('div');
         showPokemon.className = 'col-md-3';
 
-        var html = '<div class="c" onclick="Minhe_nha(' + filteredListElement.id + ')">';
+        var html = '<div class="c" onclick="showDetails(' + filteredListElement.id + ')">';
         html = html + '<img src="' + filteredListElement.sprites.front_default + '" class="i" alt="' + filteredListElement.name + '">';
         html = html + '<h5 class="text-center">#' + filteredListElement.id + ' ' + filteredListElement.name.charAt(0).toUpperCase() + filteredListElement.name.slice(1) + '</h5>';
         html = html + '<div class="text-center">';
@@ -184,7 +184,7 @@ function darkTheme() {
     document.body.classList.toggle('dark');
 }
 
-async function Minhe_nha(id) {
+async function showDetails(id) {
     try {
         var xpto = await fetch(API + '/' + id);
         var p = await xpto.json();
