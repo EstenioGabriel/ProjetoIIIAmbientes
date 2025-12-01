@@ -202,44 +202,44 @@ async function showDetails(id) {
 
         document.getElementById('modalTitle').textContent = '#' + pokemonDetailsRote.id + ' ' + pokemonDetailsRote.name.charAt(0).toUpperCase() + pokemonDetailsRote.name.slice(1);
 
-        var ph = '<div class="row"><div class="col-md-6">';
-        ph += '<div class="sprite-container">';
-        ph += '<div><img src="' + pokemonDetailsRote.sprites.front_default + '" alt="front"><p class="text-center">Normal</p></div>';
-        ph += '<div><img src="' + pokemonDetailsRote.sprites.front_shiny + '" alt="shiny"><p class="text-center">Shiny</p></div>';
-        ph += '</div>';
+        let placeHolder = '<div class="row"><div class="col-md-6">';
+        placeHolder += '<div class="sprite-container">';
+        placeHolder += '<div><img src="' + pokemonDetailsRote.sprites.front_default + '" alt="front"><p class="text-center">Normal</p></div>';
+        placeHolder += '<div><img src="' + pokemonDetailsRote.sprites.front_shiny + '" alt="shiny"><p class="text-center">Shiny</p></div>';
+        placeHolder += '</div>';
 
-        ph += '<p><strong>Tipo:</strong> ';
+        placeHolder += '<p><strong>Tipo:</strong> ';
         for(let index = 0; index < pokemonDetailsRote.types.length; index++) {
-            ph += '<span class="badge type-' + pokemonDetailsRote.types[index].type.name + '">' + pokemonDetailsRote.types[index].type.name + '</span> ';
+            placeHolder += '<span class="badge type-' + pokemonDetailsRote.types[index].type.name + '">' + pokemonDetailsRote.types[index].type.name + '</span> ';
         }
-        ph += '</p>';
+        placeHolder += '</p>';
 
-        ph += '<p><strong>Altura:</strong> ' + (pokemonDetailsRote.height / 10) + ' m</p>';
-        ph += '<p><strong>Peso:</strong> ' + (pokemonDetailsRote.weight / 10) + ' kg</p>';
+        placeHolder += '<p><strong>Altura:</strong> ' + (pokemonDetailsRote.height / 10) + ' m</p>';
+        placeHolder += '<p><strong>Peso:</strong> ' + (pokemonDetailsRote.weight / 10) + ' kg</p>';
 
-        ph += '<p><strong>Habilidades:</strong> ';
+        placeHolder += '<p><strong>Habilidades:</strong> ';
         for(let index = 0; index < pokemonDetailsRote.abilities.length; index++) {
-            ph += pokemonDetailsRote.abilities[index].ability.name;
-            if(index < pokemonDetailsRote.abilities.length - 1) ph += ', ';
+            placeHolder += pokemonDetailsRote.abilities[index].ability.name;
+            if(index < pokemonDetailsRote.abilities.length - 1) placeHolder += ', ';
         }
-        ph += '</p>';
+        placeHolder += '</p>';
 
-        ph += '</div><div class="col-md-6">';
+        placeHolder += '</div><div class="col-md-6">';
 
-        ph += '<p><strong>Descrição:</strong></p>';
-        ph += '<p>' + description.replace(/\f/g, ' ') + '</p>';
+        placeHolder += '<p><strong>Descrição:</strong></p>';
+        placeHolder += '<p>' + description.replace(/\f/g, ' ') + '</p>';
 
-        ph += '<h6>Estatísticas:</h6>';
+        placeHolder += '<h6>Estatísticas:</h6>';
         for(let index = 0; index < pokemonDetailsRote.stats.length; index++) {
             var stat = pokemonDetailsRote.stats[index];
             var percentage = (stat.base_stat / 255) * 100;
-            ph += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
-            ph += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
+            placeHolder += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
+            placeHolder += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
         }
 
-        ph += '</div></div>';
+        placeHolder += '</div></div>';
 
-        document.getElementById('modalBody').innerHTML = ph;
+        document.getElementById('modalBody').innerHTML = placeHolder;
 
         var mod = new bootstrap.Modal(document.getElementById('m'));
         mod.show();
