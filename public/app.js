@@ -126,13 +126,7 @@ function pokemonGrid() {
 
     for (var j = 0; j < p.types.length; j++) {
       var typeName = p.types[j].type.name;
-      html =
-        html +
-        '<span class="badge type-' +
-        typeName +
-        '">' +
-        typeName +
-        "</span> ";
+      html += `<span class='badge type-${typeName}'>${typeName}</span> `;
     }
 
     html = html + "</div></div>";
