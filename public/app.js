@@ -103,8 +103,8 @@ function pokemonGrid() {
         });
     }
 
-    for(let i = 0; i < pokemonFilteredList.length; i++) {
-        let p = pokemonFilteredList[i];
+    for(let index = 0; index < pokemonFilteredList.length; index++) {
+        let p = pokemonFilteredList[index];
         let showPokemon = document.createElement('div');
         showPokemon.className = 'col-md-3';
 
