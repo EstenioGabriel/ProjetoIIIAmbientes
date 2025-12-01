@@ -192,10 +192,10 @@ async function showDetails(id) {
         let response1 = await fetch(pokemonDetailsRote.species.url);
         let pokemonDetailsList = await response1.json();
 
-        var desc = '';
+        let description = '';
         for(let index = 0; index < pokemonDetailsList.flavor_text_entries.length; index++) {
             if(pokemonDetailsList.flavor_text_entries[index].language.name === 'en') {
-                desc = pokemonDetailsList.flavor_text_entries[index].flavor_text;
+                description = pokemonDetailsList.flavor_text_entries[index].flavor_text;
                 break;
             }
         }
@@ -227,7 +227,7 @@ async function showDetails(id) {
         ph += '</div><div class="col-md-6">';
 
         ph += '<p><strong>Descrição:</strong></p>';
-        ph += '<p>' + desc.replace(/\f/g, ' ') + '</p>';
+        ph += '<p>' + description.replace(/\f/g, ' ') + '</p>';
 
         ph += '<h6>Estatísticas:</h6>';
         for(let index = 0; index < pokemonDetailsRote.stats.length; index++) {
