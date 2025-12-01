@@ -91,9 +91,9 @@ async function listByType() {
     }
 }
 
-function UNIFOR() {
-    var g = document.getElementById('pokemonGrid');
-    g.innerHTML = '';
+function pokemonGrid() {
+  var pokemonGridContainer = document.getElementById("pokemonGrid");
+  pokemonGridContainer.innerHTML = "";
 
     var fil = pokemonTypeList;
     if(searchPokemon !== '') {
@@ -122,6 +122,10 @@ function UNIFOR() {
         fdp.innerHTML = html;
         g.appendChild(fdp);
     }
+    html = html + "</div></div>";
+    fdp.innerHTML = html;
+    pokemonGridContainer.appendChild(fdp);
+  }
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('pokemonGrid').style.display = 'flex';
