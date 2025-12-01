@@ -243,7 +243,7 @@ async function showDetails(id) {
         mod.show();
 
     } catch(error) {
-        console.log('erro');
+        console.log('erro',error);
         alert('Erro ao carregar detalhes!');
     }
 }
