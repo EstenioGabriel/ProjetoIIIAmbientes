@@ -99,8 +99,8 @@ async function listByType() {
 }
 
 function pokemonGrid() {
-  var g = document.getElementById("pokemonGrid");
-  g.innerHTML = "";
+  var pokemonGridContainer = document.getElementById("pokemonGrid");
+  pokemonGridContainer.innerHTML = "";
 
   var fil = pokemonTypeList;
   if (searchPokemon !== "") {
@@ -148,7 +148,7 @@ function pokemonGrid() {
 
     html = html + "</div></div>";
     fdp.innerHTML = html;
-    g.appendChild(fdp);
+    pokemonGridContainer.appendChild(fdp);
   }
 
   document.getElementById("loading").style.display = "none";
