@@ -237,8 +237,6 @@ async function showDetails(id) {
             placeHolder += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
         }
 
-        placeHolder += '</div></div>';
-
         document.getElementById('modalBody').innerHTML = placeHolder;
 
         var mod = new bootstrap.Modal(document.getElementById('m'));
