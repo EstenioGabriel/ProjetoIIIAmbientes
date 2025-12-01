@@ -92,10 +92,10 @@ async function listByType() {
 }
 
 function pokemonGrid() {
-  var pokemonGridContainer = document.getElementById("pokemonGrid");
+  let pokemonGridContainer = document.getElementById("pokemonGrid");
   pokemonGridContainer.innerHTML = "";
 
-    var pokemonFilteredList = pokemonTypeList;
+    let pokemonFilteredList = pokemonTypeList;
     if(searchPokemon !== '') {
         pokemonFilteredList = pokemonFilteredList.filter(p => {
             return p.name.toLowerCase().includes(searchPokemon.toLowerCase()) ||
@@ -103,12 +103,12 @@ function pokemonGrid() {
         });
     }
 
-    for(var i = 0; i < pokemonFilteredList.length; i++) {
-        var p = pokemonFilteredList[i];
-        var showPokemon = document.createElement('div');
+    for(let i = 0; i < pokemonFilteredList.length; i++) {
+        let p = pokemonFilteredList[i];
+        let showPokemon = document.createElement('div');
         showPokemon.className = 'col-md-3';
 
-        var html = '<div class="c" onclick="showDetails(' + p.id + ')">';
+        let html = '<div class="c" onclick="showDetails(' + p.id + ')">';
         html = html + '<img src="' + p.sprites.front_default + '" class="i" alt="' + p.name + '">';
         html = html + '<h5 class="text-center">#' + p.id + ' ' + p.name.charAt(0).toUpperCase() + p.name.slice(1) + '</h5>';
         html = html + '<div class="text-center">';
