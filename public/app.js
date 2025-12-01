@@ -117,23 +117,12 @@ function pokemonGrid() {
     var showPokemon = document.createElement("div");
     showPokemon.className = "col-md-3";
 
-    var html = '<div class="c" onclick="showDetails(' + p.id + ')">';
-    html =
-      html +
-      '<img src="' +
-      p.sprites.front_default +
-      '" class="i" alt="' +
-      p.name +
-      '">';
-    html =
-      html +
-      '<h5 class="text-center">#' +
-      p.id +
-      " " +
-      p.name.charAt(0).toUpperCase() +
-      p.name.slice(1) +
-      "</h5>";
-    html = html + '<div class="text-center">';
+    var html = `<div class="c" onclick="showDetails(${p.id})">
+  <img src='${p.sprites.front_default}' class='i' alt='${p.name}'>
+  <h5 class='text-center'>#${p.id} ${p.name
+      .charAt(0)
+      .toUpperCase()}${p.name.slice(1)}</h5>
+  <div class='text-center'>`;
 
     for (var j = 0; j < p.types.length; j++) {
       var typeName = p.types[j].type.name;
