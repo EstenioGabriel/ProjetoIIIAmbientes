@@ -186,8 +186,8 @@ function darkTheme() {
 
 async function showDetails(id) {
     try {
-        var xpto = await fetch(API + '/' + id);
-        var p = await xpto.json();
+        let response = await fetch(API + '/' + id);
+        var p = await response.json();
 
         var zyz = await fetch(p.species.url);
         var m = await zyz.json();
