@@ -5,8 +5,9 @@ let maximumPokemonPerPage = 20;
 let searchPokemon = '';
 let searchTypePokemon = '';
 
-const API = 'https://pokeapi.co/api/v2/pokemon';
-const API2 = 'https://pokeapi.co/api/v2/type';
+const API_URL = 'https://pokeapi.co/';
+const POKEMON_API_ENDPOINT = `${API_URL}/api/v2/pokemon`;
+const POKEMON_TYPE_API_ENDPOINT = `${API_URL}/api/v2/type`;
 
 async function loadingPokemonTypes() {
     document.getElementById('loading').innerHTML = '';
@@ -15,7 +16,7 @@ async function loadingPokemonTypes() {
     }
 
     try {
-        let pokemonListTypes = await fetch(API2);
+        let pokemonListTypes = await fetch(POKEMON_TYPE_API_ENDPOINT);
         let listType = await pokemonListTypes.json();
         let selectType = document.getElementById('typeFilter');
         for(let index = 0; index < listType.results.length; index++) {
@@ -37,7 +38,7 @@ async function loadingAllTypesPokemon() {
 
     try {
         let changePokemonPerPage = (minimumPokemonPerPage - 1) * maximumPokemonPerPage;
-        let pokemonLimitPage = API + '?limit=' + '&offset=' + changePokemonPerPage;
+        let pokemonLimitPage = POKEMON_API_ENDPOINT + '?limit=' + '&offset=' + changePokemonPerPage;
         let responsePokemonLimitPage = await fetch(pokemonLimitPage);
         let responsePokemonList = await responsePokemonLimitPage.json();
 
@@ -66,7 +67,7 @@ async function listByType() {
     document.getElementById('pokemonGrid').style.display = 'none';
 
     try {
-        let typePokemonRote= API2 + '/' + searchTypePokemon;
+        let typePokemonRote= POKEMON_TYPE_API_ENDPOINT + '/' + searchTypePokemon;
         let responsePokemonRote = await fetch(typePokemonRote);
         let listPokemonTypes = await responsePokemonRote.json();
 
@@ -183,7 +184,7 @@ function darkTheme() {
 
 async function showDetails(id) {
     try {
-        let response = await fetch(API + '/' + id);
+        let response = await fetch(POKEMON_API_ENDPOINT + '/' + id);
         let pokemonDetailsRote = await response.json();
 
         let response1 = await fetch(pokemonDetailsRote.species.url);
