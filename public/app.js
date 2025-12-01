@@ -91,22 +91,22 @@ async function listByType() {
     }
 }
 
-function UNIFOR() {
-    var g = document.getElementById('pokemonGrid');
-    g.innerHTML = '';
+function pokemonGrid() {
+  var pokemonGridContainer = document.getElementById("pokemonGrid");
+  pokemonGridContainer.innerHTML = "";
 
-    var fil = pokemonTypeList;
+    var pokemonFilteredList = pokemonTypeList;
     if(searchPokemon !== '') {
-        fil = fil.filter(p => {
+        pokemonFilteredList = pokemonFilteredList.filter(p => {
             return p.name.toLowerCase().includes(searchPokemon.toLowerCase()) ||
                    p.id.toString().includes(searchPokemon);
         });
     }
 
-    for(var i = 0; i < fil.length; i++) {
-        var p = fil[i];
-        var fdp = document.createElement('div');
-        fdp.className = 'col-md-3';
+    for(var i = 0; i < pokemonFilteredList.length; i++) {
+        var p = pokemonFilteredList[i];
+        var showPokemon = document.createElement('div');
+        showPokemon.className = 'col-md-3';
 
         var html = '<div class="c" onclick="showDetails(' + p.id + ')">';
         html = html + '<img src="' + p.sprites.front_default + '" class="i" alt="' + p.name + '">';
@@ -122,6 +122,10 @@ function UNIFOR() {
         fdp.innerHTML = html;
         g.appendChild(fdp);
     }
+    html = html + "</div></div>";
+    showPokemon.innerHTML = html;
+    pokemonGridContainer.appendChild(showPokemon);
+  }
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('pokemonGrid').style.display = 'flex';
