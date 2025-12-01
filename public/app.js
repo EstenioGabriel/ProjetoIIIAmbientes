@@ -108,7 +108,7 @@ function pokemonGrid() {
         var showPokemon = document.createElement('div');
         showPokemon.className = 'col-md-3';
 
-        var html = '<div class="c" onclick="Minhe_nha(' + filteredListElement.id + ')">';
+        var html = '<div class="c" onclick="showDetails(' + filteredListElement.id + ')">';
         html = html + '<img src="' + filteredListElement.sprites.front_default + '" class="i" alt="' + filteredListElement.name + '">';
         html = html + '<h5 class="text-center">#' + filteredListElement.id + ' ' + filteredListElement.name.charAt(0).toUpperCase() + filteredListElement.name.slice(1) + '</h5>';
         html = html + '<div class="text-center">';
@@ -184,68 +184,66 @@ function darkTheme() {
     document.body.classList.toggle('dark');
 }
 
-async function Minhe_nha(id) {
+async function showDetails(id) {
     try {
-        var xpto = await fetch(API + '/' + id);
-        var p = await xpto.json();
+        let response = await fetch(API + '/' + id);
+        let pokemonDetailsRote = await response.json();
 
-        var zyz = await fetch(p.species.url);
-        var m = await zyz.json();
+        let response1 = await fetch(pokemonDetailsRote.species.url);
+        let pokemonDetailsList = await response1.json();
 
-        var desc = '';
-        for(let index = 0; index < m.flavor_text_entries.length; index++) {
-            if(m.flavor_text_entries[index].language.name === 'en') {
-                desc = m.flavor_text_entries[index].flavor_text;
+        let description = '';
+        for(let index = 0; index < pokemonDetailsList.flavor_text_entries.length; index++) {
+            if(pokemonDetailsList.flavor_text_entries[index].language.name === 'en') {
+                description = pokemonDetailsList.flavor_text_entries[index].flavor_text;
                 break;
             }
         }
 
-        document.getElementById('modalTitle').textContent = '#' + p.id + ' ' + p.name.charAt(0).toUpperCase() + p.name.slice(1);
+        document.getElementById('modalTitle').textContent = '#' + pokemonDetailsRote.id + ' ' + pokemonDetailsRote.name.charAt(0).toUpperCase() + pokemonDetailsRote.name.slice(1);
 
-        var ph = '<div class="row"><div class="col-md-6">';
-        ph += '<div class="sprite-container">';
-        ph += '<div><img src="' + p.sprites.front_default + '" alt="front"><p class="text-center">Normal</p></div>';
-        ph += '<div><img src="' + p.sprites.front_shiny + '" alt="shiny"><p class="text-center">Shiny</p></div>';
-        ph += '</div>';
+        let placeHolder = '<div class="row"><div class="col-md-6">';
+        placeHolder += '<div class="sprite-container">';
+        placeHolder += '<div><img src="' + pokemonDetailsRote.sprites.front_default + '" alt="front"><p class="text-center">Normal</p></div>';
+        placeHolder += '<div><img src="' + pokemonDetailsRote.sprites.front_shiny + '" alt="shiny"><p class="text-center">Shiny</p></div>';
+        placeHolder += '</div>';
 
-        ph += '<p><strong>Tipo:</strong> ';
-        for(let index = 0; index < p.types.length; index++) {
-            ph += '<span class="badge type-' + p.types[index].type.name + '">' + p.types[index].type.name + '</span> ';
+        placeHolder += '<p><strong>Tipo:</strong> ';
+        for(let index = 0; index < pokemonDetailsRote.types.length; index++) {
+            placeHolder += '<span class="badge type-' + pokemonDetailsRote.types[index].type.name + '">' + pokemonDetailsRote.types[index].type.name + '</span> ';
         }
-        ph += '</p>';
+        placeHolder += '</p>';
 
-        ph += '<p><strong>Altura:</strong> ' + (p.height / 10) + ' m</p>';
-        ph += '<p><strong>Peso:</strong> ' + (p.weight / 10) + ' kg</p>';
+        placeHolder += '<p><strong>Altura:</strong> ' + (pokemonDetailsRote.height / 10) + 'm</p>';
+        placeHolder += '<p><strong>Peso:</strong> ' + (pokemonDetailsRote.weight / 10) + ' kg</p>';
 
-        ph += '<p><strong>Habilidades:</strong> ';
-        for(let index = 0; index < p.abilities.length; index++) {
-            ph += p.abilities[index].ability.name;
-            if(index < p.abilities.length - 1) ph += ', ';
+        placeHolder += '<p><strong>Habilidades:</strong> ';
+        for(let index = 0; index < pokemonDetailsRote.abilities.length; index++) {
+            placeHolder += pokemonDetailsRote.abilities[index].ability.name;
+            if(index < pokemonDetailsRote.abilities.length - 1) placeHolder += ', ';
         }
-        ph += '</p>';
+        placeHolder += '</p>';
 
-        ph += '</div><div class="col-md-6">';
+        placeHolder += '</div><div class="col-md-6">';
 
-        ph += '<p><strong>Descrição:</strong></p>';
-        ph += '<p>' + desc.replace(/\f/g, ' ') + '</p>';
+        placeHolder += '<p><strong>Descrição:</strong></p>';
+        placeHolder += '<p>' + description.replace(/\f/g, ' ') + '</p>';
 
-        ph += '<h6>Estatísticas:</h6>';
-        for(let index = 0; index < p.stats.length; index++) {
-            var stat = p.stats[index];
-            var percentage = (stat.base_stat / 255) * 100;
-            ph += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
-            ph += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
+        placeHolder += '<h6>Estatísticas:</h6>';
+        for(let index = 0; index < pokemonDetailsRote.stats.length; index++) {
+            let status = pokemonDetailsRote.stats[index];
+            let percentage = (status.base_stat / 255) * 100;
+            placeHolder += '<div><small>' + status.stat.name + ': ' + status.base_stat + '</small>';
+            placeHolder += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
         }
 
-        ph += '</div></div>';
+        document.getElementById('modalBody').innerHTML = placeHolder;
 
-        document.getElementById('modalBody').innerHTML = ph;
-
-        var mod = new bootstrap.Modal(document.getElementById('m'));
+        let mod = new bootstrap.Modal(document.getElementById('m'));
         mod.show();
 
     } catch(error) {
-        console.log('erro');
+        console.log('erro',error);
         alert('Erro ao carregar detalhes!');
     }
 }
