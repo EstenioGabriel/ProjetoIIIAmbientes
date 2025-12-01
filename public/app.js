@@ -54,7 +54,7 @@ async function loadingAllTypesPokemon() {
         }
 
         pokemonTypeList = [...pokemonList];
-        UNIFOR();
+        pokemonGrid();
     } catch(erro) {
         console.log('erro ao carregar',erro);
         alert('Erro ao carregar Pokémons!');
@@ -84,7 +84,7 @@ async function listByType() {
         }
 
         pokemonTypeList = [...pokemonList];
-        UNIFOR();
+        pokemonGrid();
     } catch(erro) {
         console.log('erro ao carregar tipo',erro);
         alert('Erro ao carregar Pokémons do tipo!');
@@ -119,19 +119,18 @@ function pokemonGrid() {
         }
 
         html = html + '</div></div>';
-        fdp.innerHTML = html;
-        g.appendChild(fdp);
+        showPokemon.innerHTML = html;
+        pokemonGridContainer.appendChild(showPokemon);
     }
     html = html + "</div></div>";
     showPokemon.innerHTML = html;
     pokemonGridContainer.appendChild(showPokemon);
-  }
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('pokemonGrid').style.display = 'flex';
 
     if(searchTypePokemon !== '') {
-        document.getElementById('pageInfo').textContent = 'Mostrando ' + fil.length + ' pokémons';
+        document.getElementById('pageInfo').textContent = 'Mostrando ' + pokemonFilteredList.length + ' pokémons';
     } else {
         document.getElementById('pageInfo').textContent = 'Página ' + minimumPokemonPerPage;
     }
@@ -148,7 +147,7 @@ async function f() {
     if(searchTypePokemon !== '') {
         await listByType();
     } else {
-        UNIFOR();
+        pokemonGrid();
     }
 }
 
@@ -165,7 +164,7 @@ function previousPage() {
     if(minimumPokemonPerPage > 1) {
         minimumPokemonPerPage--;
         if(searchTypePokemon !== '') {
-            UNIFOR();
+            pokemonGrid();
         } else {
             loadingAllTypesPokemon();
         }
@@ -175,7 +174,7 @@ function previousPage() {
 function nextPage() {
     minimumPokemonPerPage++;
     if(searchTypePokemon !== '') {
-        UNIFOR();
+        pokemonGrid();
     } else {
         loadingAllTypesPokemon();
     }
