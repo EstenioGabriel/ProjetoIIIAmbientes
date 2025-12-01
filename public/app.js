@@ -58,7 +58,7 @@ async function loadingAllTypesPokemon() {
     }
 
     pokemonTypeList = [...pokemonList];
-    UNIFOR();
+    pokemonGrid();
   } catch (erro) {
     console.log("erro ao carregar", erro);
     alert("Erro ao carregar Pokémons!");
@@ -88,20 +88,14 @@ async function lbt() {
     }
 
     pokemonTypeList = [...pokemonList];
-    UNIFOR();
+    pokemonGrid();
   } catch (error) {
     console.log("erro ao carregar tipo");
     alert("Erro ao carregar Pokémons do tipo!");
   }
 }
-/**
- * Função UNIFOR
- * ----------------------
- * Atualiza a grade de Pokémon na página.
- * Permite filtragem por nome ou ID, renderiza cada Pokémon com imagem, ID, nome e tipos.
- * Controla exibição de carregamento e informações da página, além de habilitar/desabilitar botões de navegação.
- */
-function UNIFOR() {
+
+function pokemonGrid() {
   var g = document.getElementById("pokemonGrid");
   // Seleciona o elemento HTML com id 'pokemonGrid', que é onde os Pokémon serão exibidos.
 
@@ -194,7 +188,7 @@ async function f() {
   if (searchTypePokemon !== "") {
     await lbt();
   } else {
-    UNIFOR();
+    pokemonGrid();
   }
 }
 
@@ -211,7 +205,7 @@ function p1() {
   if (minimumPokemonPerPage > 1) {
     minimumPokemonPerPage--;
     if (searchTypePokemon !== "") {
-      UNIFOR();
+      pokemonGrid();
     } else {
       loadingAllTypesPokemon();
     }
@@ -221,7 +215,7 @@ function p1() {
 function p2() {
   minimumPokemonPerPage++;
   if (searchTypePokemon !== "") {
-    UNIFOR();
+    pokemonGrid();
   } else {
     loadingAllTypesPokemon();
   }
