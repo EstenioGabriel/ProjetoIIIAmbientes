@@ -190,12 +190,12 @@ async function showDetails(id) {
         let pokemonDetailsRote = await response.json();
 
         let response1 = await fetch(pokemonDetailsRote.species.url);
-        var m = await response1.json();
+        let pokemonDetailsList = await response1.json();
 
         var desc = '';
-        for(let index = 0; index < m.flavor_text_entries.length; index++) {
-            if(m.flavor_text_entries[index].language.name === 'en') {
-                desc = m.flavor_text_entries[index].flavor_text;
+        for(let index = 0; index < pokemonDetailsList.flavor_text_entries.length; index++) {
+            if(pokemonDetailsList.flavor_text_entries[index].language.name === 'en') {
+                desc = pokemonDetailsList.flavor_text_entries[index].flavor_text;
                 break;
             }
         }
