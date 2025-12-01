@@ -214,7 +214,7 @@ async function showDetails(id) {
         }
         placeHolder += '</p>';
 
-        placeHolder += '<p><strong>Altura:</strong> ' + (pokemonDetailsRote.height / 10) + ' m</p>';
+        placeHolder += '<p><strong>Altura:</strong> ' + (pokemonDetailsRote.height / 10) + 'm</p>';
         placeHolder += '<p><strong>Peso:</strong> ' + (pokemonDetailsRote.weight / 10) + ' kg</p>';
 
         placeHolder += '<p><strong>Habilidades:</strong> ';
@@ -231,9 +231,9 @@ async function showDetails(id) {
 
         placeHolder += '<h6>Estatísticas:</h6>';
         for(let index = 0; index < pokemonDetailsRote.stats.length; index++) {
-            var stat = pokemonDetailsRote.stats[index];
-            var percentage = (stat.base_stat / 255) * 100;
-            placeHolder += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
+            let statatus = pokemonDetailsRote.stats[index];
+            var percentage = (statatus.base_stat / 255) * 100;
+            placeHolder += '<div><small>' + statatus.stat.name + ': ' + statatus.base_stat + '</small>';
             placeHolder += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
         }
 
