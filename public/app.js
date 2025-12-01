@@ -189,8 +189,8 @@ async function showDetails(id) {
         let response = await fetch(API + '/' + id);
         let pokemonDetailsRote = await response.json();
 
-        let zyz = await fetch(pokemonDetailsRote.species.url);
-        var m = await zyz.json();
+        let response1 = await fetch(pokemonDetailsRote.species.url);
+        var m = await response1.json();
 
         var desc = '';
         for(let index = 0; index < m.flavor_text_entries.length; index++) {
