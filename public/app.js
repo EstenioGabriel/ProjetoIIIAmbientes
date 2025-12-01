@@ -92,10 +92,10 @@ async function listByType() {
 }
 
 function pokemonGrid() {
-  var pokemonGridContainer = document.getElementById("pokemonGrid");
+  let pokemonGridContainer = document.getElementById("pokemonGrid");
   pokemonGridContainer.innerHTML = "";
 
-    var pokemonFilteredList = pokemonTypeList;
+    let pokemonFilteredList = pokemonTypeList;
     if(searchPokemon !== '') {
         pokemonFilteredList = pokemonFilteredList.filter(p => {
             return p.name.toLowerCase().includes(searchPokemon.toLowerCase()) ||
@@ -103,18 +103,18 @@ function pokemonGrid() {
         });
     }
 
-    for(var i = 0; i < pokemonFilteredList.length; i++) {
-        var p = pokemonFilteredList[i];
+    for(let i = 0; i < pokemonFilteredList.length; i++) {
+        let filteredListElement = pokemonFilteredList[i];
         var showPokemon = document.createElement('div');
         showPokemon.className = 'col-md-3';
 
-        var html = '<div class="c" onclick="showDetails(' + p.id + ')">';
-        html = html + '<img src="' + p.sprites.front_default + '" class="i" alt="' + p.name + '">';
-        html = html + '<h5 class="text-center">#' + p.id + ' ' + p.name.charAt(0).toUpperCase() + p.name.slice(1) + '</h5>';
+        var html = '<div class="c" onclick="Minhe_nha(' + filteredListElement.id + ')">';
+        html = html + '<img src="' + filteredListElement.sprites.front_default + '" class="i" alt="' + filteredListElement.name + '">';
+        html = html + '<h5 class="text-center">#' + filteredListElement.id + ' ' + filteredListElement.name.charAt(0).toUpperCase() + filteredListElement.name.slice(1) + '</h5>';
         html = html + '<div class="text-center">';
 
-        for(var j = 0; j < p.types.length; j++) {
-            var typeName = p.types[j].type.name;
+        for(let j = 0; j < filteredListElement.types.length; j++) {
+            let typeName = filteredListElement.types[j].type.name;
             html = html + '<span class="badge type-' + typeName + '">' + typeName + '</span> ';
         }
 
