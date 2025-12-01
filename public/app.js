@@ -187,9 +187,9 @@ function darkTheme() {
 async function showDetails(id) {
     try {
         let response = await fetch(API + '/' + id);
-        var p = await response.json();
+        let pokemonListDetails = await response.json();
 
-        var zyz = await fetch(p.species.url);
+        var zyz = await fetch(pokemonListDetails.species.url);
         var m = await zyz.json();
 
         var desc = '';
@@ -200,27 +200,27 @@ async function showDetails(id) {
             }
         }
 
-        document.getElementById('modalTitle').textContent = '#' + p.id + ' ' + p.name.charAt(0).toUpperCase() + p.name.slice(1);
+        document.getElementById('modalTitle').textContent = '#' + pokemonListDetails.id + ' ' + pokemonListDetails.name.charAt(0).toUpperCase() + pokemonListDetails.name.slice(1);
 
         var ph = '<div class="row"><div class="col-md-6">';
         ph += '<div class="sprite-container">';
-        ph += '<div><img src="' + p.sprites.front_default + '" alt="front"><p class="text-center">Normal</p></div>';
-        ph += '<div><img src="' + p.sprites.front_shiny + '" alt="shiny"><p class="text-center">Shiny</p></div>';
+        ph += '<div><img src="' + pokemonListDetails.sprites.front_default + '" alt="front"><p class="text-center">Normal</p></div>';
+        ph += '<div><img src="' + pokemonListDetails.sprites.front_shiny + '" alt="shiny"><p class="text-center">Shiny</p></div>';
         ph += '</div>';
 
         ph += '<p><strong>Tipo:</strong> ';
-        for(let index = 0; index < p.types.length; index++) {
-            ph += '<span class="badge type-' + p.types[index].type.name + '">' + p.types[index].type.name + '</span> ';
+        for(let index = 0; index < pokemonListDetails.types.length; index++) {
+            ph += '<span class="badge type-' + pokemonListDetails.types[index].type.name + '">' + pokemonListDetails.types[index].type.name + '</span> ';
         }
         ph += '</p>';
 
-        ph += '<p><strong>Altura:</strong> ' + (p.height / 10) + ' m</p>';
-        ph += '<p><strong>Peso:</strong> ' + (p.weight / 10) + ' kg</p>';
+        ph += '<p><strong>Altura:</strong> ' + (pokemonListDetails.height / 10) + ' m</p>';
+        ph += '<p><strong>Peso:</strong> ' + (pokemonListDetails.weight / 10) + ' kg</p>';
 
         ph += '<p><strong>Habilidades:</strong> ';
-        for(let index = 0; index < p.abilities.length; index++) {
-            ph += p.abilities[index].ability.name;
-            if(index < p.abilities.length - 1) ph += ', ';
+        for(let index = 0; index < pokemonListDetails.abilities.length; index++) {
+            ph += pokemonListDetails.abilities[index].ability.name;
+            if(index < pokemonListDetails.abilities.length - 1) ph += ', ';
         }
         ph += '</p>';
 
@@ -230,8 +230,8 @@ async function showDetails(id) {
         ph += '<p>' + desc.replace(/\f/g, ' ') + '</p>';
 
         ph += '<h6>Estatísticas:</h6>';
-        for(let index = 0; index < p.stats.length; index++) {
-            var stat = p.stats[index];
+        for(let index = 0; index < pokemonListDetails.stats.length; index++) {
+            var stat = pokemonListDetails.stats[index];
             var percentage = (stat.base_stat / 255) * 100;
             ph += '<div><small>' + stat.stat.name + ': ' + stat.base_stat + '</small>';
             ph += '<div class="stat-bar"><div class="stat-fill" style="width: ' + percentage + '%"></div></div></div>';
