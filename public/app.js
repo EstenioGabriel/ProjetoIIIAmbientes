@@ -122,9 +122,6 @@ function pokemonGrid() {
         showPokemon.innerHTML = html;
         pokemonGridContainer.appendChild(showPokemon);
     }
-    html = html + "</div></div>";
-    showPokemon.innerHTML = html;
-    pokemonGridContainer.appendChild(showPokemon);
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('pokemonGrid').style.display = 'flex';
