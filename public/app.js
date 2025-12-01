@@ -95,16 +95,16 @@ function pokemonGrid() {
   var pokemonGridContainer = document.getElementById("pokemonGrid");
   pokemonGridContainer.innerHTML = "";
 
-    var fil = pokemonTypeList;
+    var pokemonFilteredList = pokemonTypeList;
     if(searchPokemon !== '') {
-        fil = fil.filter(p => {
+        pokemonFilteredList = pokemonFilteredList.filter(p => {
             return p.name.toLowerCase().includes(searchPokemon.toLowerCase()) ||
                    p.id.toString().includes(searchPokemon);
         });
     }
 
-    for(var i = 0; i < fil.length; i++) {
-        var p = fil[i];
+    for(var i = 0; i < pokemonFilteredList.length; i++) {
+        var p = pokemonFilteredList[i];
         var fdp = document.createElement('div');
         fdp.className = 'col-md-3';
 
