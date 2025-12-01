@@ -1,37 +1,23 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+// Importa o framework Express usando require (CommonJS)
+
+const path = require("path");
+// Importa módulo nativo do Node que lida com caminhos de arquivos
+
 const app = express();
+// Cria a instância da aplicação Express
 
-const p = 3000;
+const port = 3000;
+// Define a porta (variável 'port') usada pelo servidor
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+// Essa função faz o Express servir todo o conteúdo da pasta public como conteúdo do FrontEnd
 
-function doStuff(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));    
-    console.log('x');
-}
+app.listen(port, () => {
+  // NÃO PODE SER ALTERADO – PARTE DA BIBLIOTECA
+  // listen(PORTA DO SERVIDOR , callback) é obrigatório desse jeito.
 
-app.get('/', doStuff);
-
-app.listen(p, () => {
-    var msg = 'Server';
-    msg = msg + ' ';
-    msg = msg + 'running';
-    msg = msg + ' ';
-    msg = msg + 'on';
-    msg = msg + ' ';
-    msg = msg + 'port';
-    msg = msg + ' ';
-    msg = msg + p;
-    console.log(msg);
-    
-    var unused = 'this is never used';
-    var x = 10;
-    var y = 20;
+  console.log(`Server running on port ${port}`);
 });
 
-function f1() {
-    return true;
-}
 
-var globalVar = 'I am global';
