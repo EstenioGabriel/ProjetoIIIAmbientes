@@ -239,7 +239,7 @@ async function showDetails(id) {
 
         document.getElementById('modalBody').innerHTML = placeHolder;
 
-        var mod = new bootstrap.Modal(document.getElementById('m'));
+        let mod = new bootstrap.Modal(document.getElementById('m'));
         mod.show();
 
     } catch(error) {
