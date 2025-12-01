@@ -103,18 +103,18 @@ function pokemonGrid() {
         });
     }
 
-    for(let index = 0; index < pokemonFilteredList.length; index++) {
-        let p = pokemonFilteredList[index];
-        let showPokemon = document.createElement('div');
+    for(let i = 0; i < pokemonFilteredList.length; i++) {
+        let filteredListElement = pokemonFilteredList[i];
+        var showPokemon = document.createElement('div');
         showPokemon.className = 'col-md-3';
 
-        let html = '<div class="c" onclick="showDetails(' + p.id + ')">';
-        html = html + '<img src="' + p.sprites.front_default + '" class="i" alt="' + p.name + '">';
-        html = html + '<h5 class="text-center">#' + p.id + ' ' + p.name.charAt(0).toUpperCase() + p.name.slice(1) + '</h5>';
+        var html = '<div class="c" onclick="showDetails(' + filteredListElement.id + ')">';
+        html = html + '<img src="' + filteredListElement.sprites.front_default + '" class="i" alt="' + filteredListElement.name + '">';
+        html = html + '<h5 class="text-center">#' + filteredListElement.id + ' ' + filteredListElement.name.charAt(0).toUpperCase() + filteredListElement.name.slice(1) + '</h5>';
         html = html + '<div class="text-center">';
 
-        for(var j = 0; j < p.types.length; j++) {
-            var typeName = p.types[j].type.name;
+        for(let j = 0; j < filteredListElement.types.length; j++) {
+            let typeName = filteredListElement.types[j].type.name;
             html = html + '<span class="badge type-' + typeName + '">' + typeName + '</span> ';
         }
 
