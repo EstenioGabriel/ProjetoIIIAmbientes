@@ -129,7 +129,7 @@ function pokemonGrid() {
       html += `<span class='badge type-${typeName}'>${typeName}</span> `;
     }
 
-    html = html + "</div></div>";
+    html += `</div></div>`;
     showPokemon.innerHTML = html;
     pokemonGridContainer.appendChild(showPokemon);
   }
