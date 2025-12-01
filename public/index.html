@@ -43,11 +43,15 @@
             class="form-control"
             id="s"
             placeholder="Buscar Pokémon..."
-            onkeyup="f()"
+            onkeyup="filterPokemon()"
           />
         </div>
         <div class="col-md-4">
-          <select class="form-select" id="typeFilter" onchange="f()">
+          <select
+            class="form-select"
+            id="typeFilter"
+            onchange="filterPokemon()"
+          >
             <option value="">Todos os tipos</option>
           </select>
         </div>
