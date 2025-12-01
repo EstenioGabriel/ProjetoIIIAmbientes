@@ -50,11 +50,33 @@ async function loadingAllTypesPokemon() {
       listAllPokemons.push(fetch(responsePokemonList.results[index].url));
     }
 
-    let responseListAllPokemons = await Promise.all(listAllPokemons);
-    pokemonList = [];
-    for (let index = 0; index < responseListAllPokemons.length; index++) {
-      let pokemon = await responseListAllPokemons[index].json();
-      pokemonList.push(pokemon);
+async function listByType() {
+    document.getElementById('loading').style.display = 'flex';
+    document.getElementById('pokemonGrid').style.display = 'none';
+
+    try {
+        let typePokemonRote= API2 + '/' + searchTypePokemon;
+        let responsePokemonRote = await fetch(typePokemonRote);
+        let listPokemonTypes = await responsePokemonRote.json();
+
+        let pokemonTypesList = [];
+        let limitPerPage = listPokemonTypes.pokemon.length > 100 ? 100 : listPokemonTypes.pokemon.length; // Limita a 100
+        for(let index = 0; index < limitPerPage; index++) {
+            pokemonTypesList.push(fetch(listPokemonTypes.pokemon[index].pokemon.url));
+        }
+
+        let response = await Promise.all(pokemonTypesList);
+        pokemonList = [];
+        for(let index = 0; index < response.length; index++) {
+            let responseData = await response[index].json();
+            pokemonList.push(responseData);
+        }
+
+        pokemonTypeList = [...pokemonList];
+        UNIFOR();
+    } catch(erro) {
+        console.log('erro ao carregar tipo',erro);
+        alert('Erro ao carregar Pokémons do tipo!');
     }
 
     pokemonTypeList = [...pokemonList];
@@ -181,48 +203,49 @@ function pokemonGrid() {
 }
 
 async function f() {
-  searchPokemon = document.getElementById("s").value;
-  searchTypePokemon = document.getElementById("typeFilter").value;
+    searchPokemon = document.getElementById('s').value;
+    searchTypePokemon = document.getElementById('typeFilter').value;
 
-  // Se tem filtro de tipo, busca pokémons daquele tipo
-  if (searchTypePokemon !== "") {
-    await lbt();
-  } else {
-    pokemonGrid();
-  }
-}
-
-function r() {
-  document.getElementById("s").value = "";
-  document.getElementById("typeFilter").value = "";
-  searchPokemon = "";
-  searchTypePokemon = "";
-  minimumPokemonPerPage = 1;
-  loadingAllTypesPokemon();
-}
-
-function p1() {
-  if (minimumPokemonPerPage > 1) {
-    minimumPokemonPerPage--;
-    if (searchTypePokemon !== "") {
-      pokemonGrid();
+    // Se tem filtro de tipo, busca pokémons daquele tipo
+    if(searchTypePokemon !== '') {
+        await listByType();
     } else {
-      loadingAllTypesPokemon();
+        UNIFOR();
+    }
+}
+
+function clearSearch() {
+    document.getElementById('s').value = '';
+    document.getElementById('typeFilter').value = '';
+    searchPokemon = '';
+    searchTypePokemon = '';
+    minimumPokemonPerPage = 1;
+    loadingAllTypesPokemon();
+}
+
+function previousPage() {
+    if(minimumPokemonPerPage > 1) {
+        minimumPokemonPerPage--;
+        if(searchTypePokemon !== '') {
+            UNIFOR();
+        } else {
+            loadingAllTypesPokemon();
+        }
     }
   }
 }
 
-function p2() {
-  minimumPokemonPerPage++;
-  if (searchTypePokemon !== "") {
-    pokemonGrid();
-  } else {
-    loadingAllTypesPokemon();
-  }
+function nextPage() {
+    minimumPokemonPerPage++;
+    if(searchTypePokemon !== '') {
+        UNIFOR();
+    } else {
+        loadingAllTypesPokemon();
+    }
 }
 
-function x() {
-  document.body.classList.toggle("dark");
+function darkTheme() {
+    document.body.classList.toggle('dark');
 }
 
 async function Minhe_nha(id) {
